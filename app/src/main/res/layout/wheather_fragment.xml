@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="giorno"
+        android:id="@+id/day_view_fragment"
+        android:layout_marginRight="5px"
+        android:layout_weight="0.2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="min: "
+        android:id="@+id/min_view_fragment"
+        android:layout_weight="0.15" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="max:"
+        android:id="@+id/max_view_fragment"
+        android:layout_weight="0.15" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="condizione"
+        android:id="@+id/details_view_fragment"
+        android:layout_weight="0.5" />
+</LinearLayout>
