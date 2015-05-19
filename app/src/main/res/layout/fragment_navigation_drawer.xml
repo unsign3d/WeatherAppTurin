@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_navigation_bar"
+    tools:context="it.unsigned.weatherappturin.NavigationDrawerFragment"
+    android:background="#fff">
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/ll"
+        >
+        <TextView android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height_material"
+            android:text=""
+            android:background="@color/colorPrimary"
+            android:id="@+id/fakeToolbar"/>
+        <TextView android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height_material"
+            android:text="@string/hello_blank_fragment"
+            android:paddingLeft="16dp"
+            android:layout_marginTop="16dp"/>
+        <TextView android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height_material"
+            android:text="Lorem ipsum dolor sit amet"
+            android:paddingLeft="16dp"/>
+        <TextView android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height_material"
+            android:text="Lorem ipsum dolor sit amet"
+            android:paddingLeft="16dp"/>
+        <TextView android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height_material"
+            android:text="Lorem ipsum dolor sit amet"
+            android:paddingLeft="16dp"/>
+
+    </LinearLayout>
+    <TextView android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:text="Lorem ipsum dolor sit amet"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"/>
+
+</RelativeLayout>
