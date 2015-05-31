@@ -3,21 +3,15 @@ package it.unsigned.weatherappturin;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.telephony.SignalStrength;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.squareup.okhttp.OkHttpClient;
-
-import org.w3c.dom.Text;
-
-import java.io.IOException;
 import java.util.List;
+
+import javax.inject.Inject;
 
 
 /**
@@ -26,10 +20,12 @@ import java.util.List;
 public class MainActivityFragment extends Fragment {
 
 
-    private Weather mWeather;
+    Weather mWeather;
     private WeatherObjectAdapter mWeatherObjectAdapter;
 
     public MainActivityFragment() {
+        // this is the Dagger magic to do DI
+        mWeather = DaggerWeatherComponent.builder().weatherModule(new WeatherModule()).build().provideWeather();
     }
 
     @Override
@@ -72,9 +68,9 @@ public class MainActivityFragment extends Fragment {
         // this is done in the other 3d so you sould not touch
         // the ui
         protected List<WeatherObject> doInBackground(Void... params) {
-            Weather weather = new Weather();
+
             String exception = "";
-            mWheatherList = weather.getWeather(exception);
+            mWheatherList = mWeather.getWeather(exception);
 
             if(!exception.isEmpty()) {
                 Log.e("weatherapp", "problem retriving weather" + exception);

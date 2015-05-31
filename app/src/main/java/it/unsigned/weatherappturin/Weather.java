@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -26,20 +27,18 @@ import dagger.Provides;
 /**
  * Created by Luca Bruzzone on 09/05/2015.
  */
-@Module
+
 public class Weather {
     private String mLoc = "Turin";
     private String mUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q="+mLoc+"&units=metric&cnt=7";
+    private final OkHttpClient mClient;
 
-
-    public Weather(){
+    @Inject
+    public Weather(OkHttpClient client){
         // dependency injection for okhttpclient
+        mClient = client;
     }
 
-    @Provides @Singleton
-    public OkHttpClient provideOkHttpClient() {
-        return new OkHttpClient();
-    }
 
     /**
      *
@@ -47,7 +46,6 @@ public class Weather {
      * @throws IOException when he can't download the weather, the handling is left to the higher level
      * so you can actually handle with android notification
      */
-    @Provides @Singleton
     public String getJSONWheather(OkHttpClient okHttpClient, String exc){
         // build the request
         Request request = new Request.Builder().url(mUrl).build();
@@ -64,7 +62,7 @@ public class Weather {
 
     public List<WeatherObject> getWeather(String exc){
         String exc_s = "";
-        String jsonString = getJSONWheather(provideOkHttpClient(), exc_s);
+        String jsonString = getJSONWheather(this.mClient, exc_s);
 
         List<WeatherObject> result = new ArrayList<WeatherObject>(7);
         if(!exc_s.isEmpty()) {
